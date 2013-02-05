@@ -1,0 +1,23 @@
+{
+    "name": "druuid"
+  , "version": "1.0.0"
+  , "description": "Date-relative UUIDs"
+  , "contributors": [
+      "Stephen Celis <stephen@recurly.com>"
+  ]
+  , "main": "./druuid"
+  , "repository": {
+      "type": "git",
+      "url": "https://github.com/recurly/druuid.git"
+  }
+  , "dependencies": {
+      "bigint": "0.3.9"
+  }
+  , "devDependencies": {
+      "jshint": "*"
+    , "mocha": "*"
+    , "should": "*"
+  }
+  , "engines": { "node": "0.8.x" }
+  , "license": "MIT"
+}
