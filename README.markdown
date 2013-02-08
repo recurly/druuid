@@ -27,7 +27,7 @@ look something like 11142943683383068069. In binary:
 |-------------------------------------------|-------------------------|
 | 10011010101000111011000000111110000000000 | 01110110000010110100101 |
 
-This ID can be easily displayed compactly with base 36: 2cnpvvfkm56ed.
+This ID can be displayed compactly in base 36: 2cnpvvfkm56ed.
 
 
 ### Pros
