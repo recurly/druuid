@@ -51,9 +51,11 @@ This ID can be easily displayed compactly with base 36: 2cnpvvfkm56ed.
 
   <img src='doc/probability.png' alt='p(n)≈1-e^(-(n^2)/(2*2^23))' height='72' width='323'/>
 
-  At a rate of 10 IDs per millisecond, the probability a collision will
-  occur within any given millisecond is 0.000596%. IDs generated in
-  different milliseconds cannot collide.
+  IDs generated in different milliseconds cannot collide, but at a rate
+  of 10 IDs per millisecond (10,000 IDs per second), the probability a
+  collision will occur within any given millisecond approaches
+  0.000596%, which is about once every few minutes if that rate is
+  constant.
 
 [3]: http://en.wikipedia.org/wiki/Birthday_problem
 
