@@ -46,7 +46,7 @@ describe('druuid', function(){
     var datetime = new Date(Date.UTC(2012, 1, 4, 8))
       , uuid = '11142943683383068069';
     it('determines when a UUID was generated', function(){
-      druuid.time(uuid).should.equal(datetime);
+      druuid.time(uuid).should.eql(datetime);
     });
 
     var offset = 1000 * 60 * 60 * 24
@@ -54,7 +54,7 @@ describe('druuid', function(){
     dateoffset.setMilliseconds(dateoffset.getMilliseconds() + offset);
     context('with a given epoch', function(){
       it('determines UUID date against the offset', function(){
-        druuid.time(uuid, offset).should.equal(dateoffset);
+        druuid.time(uuid, offset).should.eql(dateoffset);
       });
     });
 
@@ -62,7 +62,7 @@ describe('druuid', function(){
       var oldEpoch;
       before(function(){ oldEpoch = druuid.epoch, druuid.epoch = offset; });
       it('generates the UUID against the offset', function(){
-        druuid.time(uuid).should.equal(dateoffset);
+        druuid.time(uuid).should.eql(dateoffset);
       });
       after(function(){ druuid.epoch = oldEpoch; });
     });
