@@ -1,6 +1,6 @@
 {
     "name": "druuid"
-  , "version": "1.0.0"
+  , "version": "1.0.1"
   , "description": "Date-relative UUIDs"
   , "contributors": [
       "Stephen Celis <stephen@recurly.com>"
@@ -18,6 +18,6 @@
     , "mocha": "*"
     , "should": "*"
   }
-  , "engines": { "node": "0.8.x" }
+  , "engines": { "node": ">= 0.8" }
   , "license": "MIT"
 }
