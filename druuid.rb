@@ -21,8 +21,8 @@ module Druuid
     def gen time = Time.now, epoch = epoch
       ms = ((time.to_f - epoch.to_i) * 1e3).round
       rand = (SecureRandom.random_number * 1e16).round
-      id = ms << (63 - 40)
-      id | rand % (2 ** (63 - 40))
+      id = ms << (64 - 41)
+      id | rand % (2 ** (64 - 41))
     end
 
     # Determines when a given UUID was generated.
@@ -34,7 +34,7 @@ module Druuid
     #   Druuid.time 11142943683383068069
     #   # => 2012-02-04 00:00:00 -0800
     def time uuid, epoch = epoch
-      ms = uuid >> (63 - 40)
+      ms = uuid >> (64 - 41)
       Time.at (ms / 1e3) + epoch.to_i
     end
 
