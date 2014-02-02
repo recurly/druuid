@@ -78,20 +78,6 @@ $ gem install druuid
 
 ## Examples
 
-### Node
-
-``` javascript
-var druuid = require('druuid');
-// druuid.epoch = Date.UTC(1970, 0); // change the default (Unix) epoch
-
-var uuid = druuid.gen();
-// => <BigInt 11142943683383068069>
-druuid.time(uuid);
-// => Sat Feb 04 2012 00:00:00 GMT-0800 (PST)
-```
-
-### Ruby
-
 ``` ruby
 require 'druuid'
 # Druuid.epoch = Time.utc 1970 # change the default (Unix) epoch
