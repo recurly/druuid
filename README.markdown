@@ -49,7 +49,7 @@ This ID can be displayed compactly in base 36: 2cnpvvfkm56ed.
   number of IDs generated per millisecond and 23 represents the number
   of random bits):
 
-  <img src='doc/probability.png' alt='p(n)≈1-e^(-(n^2)/(2*2^23))' height='72' width='323'/>
+  <img src='https://cloudup.com/files/id7BGBwAxUt/download' alt='p(n)≈1-e^(-(n^2)/(2*2^23))' height='72' width='323'/>
 
   IDs generated in different milliseconds cannot collide, but at a rate
   of 10 IDs per millisecond (10,000 IDs per second), the probability a
