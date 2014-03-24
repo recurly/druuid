@@ -49,7 +49,7 @@ This ID can be displayed compactly in base 36: 2cnpvvfkm56ed.
   number of IDs generated per millisecond and 23 represents the number
   of random bits):
 
-  <img src='doc/probability.png' alt='p(n)≈1-e^(-(n^2)/(2*2^23))' height='72' width='323'/>
+  <img src='https://cloudup.com/files/id7BGBwAxUt/download' alt='p(n)≈1-e^(-(n^2)/(2*2^23))' height='72' width='323'/>
 
   IDs generated in different milliseconds cannot collide, but at a rate
   of 10 IDs per millisecond (10,000 IDs per second), the probability a
@@ -77,20 +77,6 @@ $ gem install druuid
 
 
 ## Examples
-
-### Node
-
-``` javascript
-var druuid = require('druuid');
-// druuid.epoch = Date.UTC(1970, 0); // change the default (Unix) epoch
-
-var uuid = druuid.gen();
-// => <BigInt 11142943683383068069>
-druuid.time(uuid);
-// => Sat Feb 04 2012 00:00:00 GMT-0800 (PST)
-```
-
-### Ruby
 
 ``` ruby
 require 'druuid'
