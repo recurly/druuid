@@ -18,8 +18,8 @@ module Druuid
     # @param [Time] time of UUID
     # @param [Numeric] epoch offset
     # @return [Bignum] UUID
-    def gen time = Time.now, epoch = epoch
-      ms = ((time.to_f - epoch.to_i) * 1e3).round
+    def gen time = Time.now, epoch_offset = epoch
+      ms = ((time.to_f - epoch_offset.to_i) * 1e3).round
       rand = (SecureRandom.random_number * 1e16).round
       id = ms << (64 - 41)
       id | rand % (2 ** (64 - 41))
@@ -33,9 +33,9 @@ module Druuid
     # @example
     #   Druuid.time 11142943683383068069
     #   # => 2012-02-04 00:00:00 -0800
-    def time uuid, epoch = epoch
+    def time uuid, epoch_offset = epoch
       ms = uuid >> (64 - 41)
-      Time.at (ms / 1e3) + epoch.to_i
+      Time.at (ms / 1e3) + epoch_offset.to_i
     end
 
   end
