@@ -1,0 +1,8 @@
+language: ruby
+cache: bundler
+sudo: false
+rvm:
+  - jruby
+  - 2.0.0
+  - 2.1
+  - 2.2
