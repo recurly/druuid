@@ -1,6 +1,7 @@
 # Druuid
 
-Date-relative (and relatively universally unique) UUID generation.
+Date-relative (and relatively universally unique) UUID generation. A JavaScript
+implementation is [also available](https://github.com/recurly/node-druuid).
 
 
 ## Overview
@@ -60,16 +61,7 @@ This ID can be displayed compactly in base 36: 2cnpvvfkm56ed.
 [3]: http://en.wikipedia.org/wiki/Birthday_problem
 
 
-## Dependencies/Installation
-
-### Node
-
-``` sh
-$ brew install gmp     # `apt-get install libgmp' on Ubuntu.
-$ npm install druuid
-```
-
-### Ruby
+## Installation
 
 ``` sh
 $ gem install druuid
@@ -87,6 +79,7 @@ uuid = Druuid.gen
 Druuid.time uuid
 # => 2012-02-04 00:00:00 -0800
 ```
+
 
 ## License
 
