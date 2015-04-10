@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    druuid (1.0.0)
+    druuid (1.0.1)
 
 GEM
   remote: https://rubygems.org/
