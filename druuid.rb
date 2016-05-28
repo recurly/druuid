@@ -35,7 +35,7 @@ module Druuid
     #   # => 2012-02-04 00:00:00 -0800
     def time uuid, epoch_offset = epoch
       ms = uuid >> (64 - 41)
-      Time.at (ms / 1e3) + epoch_offset.to_i
+      Time.at(ms / 1e3) + epoch_offset.to_i
     end
 
   end
