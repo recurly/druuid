@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'druuid'
-  s.version = '1.0.1'
+  s.version = '1.0.2'
   s.summary = 'Date-relative UUID generation'
   s.description = 'Druuid generates 64-bit, time-sortable UUIDs.'
 

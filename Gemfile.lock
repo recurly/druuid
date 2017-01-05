@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    druuid (1.0.1)
+    druuid (1.0.2)
 
 GEM
   remote: https://rubygems.org/
@@ -24,3 +24,6 @@ DEPENDENCIES
   druuid!
   rake
   rspec
+
+BUNDLED WITH
+   1.11.2
