@@ -54,4 +54,19 @@ describe Druuid do
       after { Druuid.epoch = @old_epoch }
     end
   end
+
+  describe '.gen_range' do
+    let(:beginning_datetime) { Time.utc 2015, 2, 3, 12, 2, 34 }
+    let(:ending_datetime) { Time.utc 2015, 2, 3, 17, 56, 12}
+    it 'provides the id range for the provided range of datetime' do
+      Druuid.gen_range(beginning_datetime..ending_datetime).should eq 11936695196844032000..11936873186336964607
+    end
+
+    it 'results can be handed back to Druuid.time to reproduce the same datetime values' do
+      generated_id_range = Druuid.gen_range(beginning_datetime..ending_datetime)
+      converted_datetime_range = Druuid.time(generated_id_range.begin)..Druuid.time(generated_id_range.end)
+      converted_datetime_range.should eq beginning_datetime..ending_datetime
+    end
+  end
+
 end
