@@ -1,34 +1,43 @@
 require_relative '../druuid'
 
 describe Druuid do
-  describe '.gen' do
-    it 'generates a UUID' do
-      uuid = Druuid.gen
-      uuid.should be_instance_of Bignum
-      uuid.should_not eq Druuid.gen
-    end
-
+  shared_examples "druuid generator" do |method|
     let(:datetime) { Time.utc 2012, 2, 4, 8 }
     let(:prefix) { '111429436833' }
+
+    it "is a Bugnum" do
+      Druuid.send(method).should be_instance_of Bignum
+    end
+
     context 'with a given time' do
       it 'generates the UUID against the time' do
-        Druuid.gen(datetime).to_s[0, 12].should eq prefix
+        Druuid.send(method, datetime).to_s[0, 12].should eq prefix
       end
     end
 
     let(:offset) { 60 * 60 * 24 }
     context 'with a given epoch' do
       it 'generates the UUID against the offset' do
-        Druuid.gen(datetime + offset, offset).to_s[0, 12].should eq prefix
+        Druuid.send(method, datetime + offset, offset).to_s[0, 12].should eq prefix
       end
     end
 
     context 'with a default epoch' do
       before { @old_epoch, Druuid.epoch = Druuid.epoch, offset }
       it 'generates the UUID against the offset' do
-        Druuid.gen(datetime + offset).to_s[0, 12].should eq prefix
+        Druuid.send(method, datetime + offset).to_s[0, 12].should eq prefix
       end
       after { Druuid.epoch = @old_epoch }
+    end
+  end
+
+
+  describe '.gen' do
+    it_behaves_like 'druuid generator', :gen
+
+    it 'generates a UUID' do
+      uuid = Druuid.gen
+      uuid.should_not eq Druuid.gen
     end
   end
 
@@ -52,6 +61,16 @@ describe Druuid do
         Druuid.time(uuid).should eq datetime + offset
       end
       after { Druuid.epoch = @old_epoch }
+    end
+  end
+
+  describe '.min_for_time' do
+    it_behaves_like 'druuid generator', :min_for_time
+
+    let(:datetime) { Time.utc 2012, 2, 4, 8 }
+    it 'generates druuid without random bits' do
+      random_bits = Druuid.min_for_time(Time.now) & Integer("0b" + ("1" * Druuid::NUM_RANDOM_BITS))
+      random_bits.should be_zero
     end
   end
 end

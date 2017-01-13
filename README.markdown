@@ -76,8 +76,10 @@ require 'druuid'
 
 uuid = Druuid.gen
 # => 11142943683383068069
-Druuid.time uuid
+time = Druuid.time uuid
 # => 2012-02-04 00:00:00 -0800
+Druuid.min_for_time time
+# => 11142943683379200000
 ```
 
 

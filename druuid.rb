@@ -4,6 +4,7 @@ require 'securerandom'
 #
 # Date-relative UUID generation.
 module Druuid
+  NUM_RANDOM_BITS = 64 - 41
 
   class << self
 
@@ -21,8 +22,8 @@ module Druuid
     def gen time = Time.now, epoch_offset = epoch
       ms = ((time.to_f - epoch_offset.to_i) * 1e3).round
       rand = (SecureRandom.random_number * 1e16).round
-      id = ms << (64 - 41)
-      id | rand % (2 ** (64 - 41))
+      id = ms << NUM_RANDOM_BITS
+      id | rand % (2 ** NUM_RANDOM_BITS)
     end
 
     # Determines when a given UUID was generated.
@@ -34,8 +35,21 @@ module Druuid
     #   Druuid.time 11142943683383068069
     #   # => 2012-02-04 00:00:00 -0800
     def time uuid, epoch_offset = epoch
-      ms = uuid >> (64 - 41)
+      ms = uuid >> NUM_RANDOM_BITS
       Time.at(ms / 1e3) + epoch_offset.to_i
+    end
+
+    # Determines the minimum UUID that could be generated for the given time.
+    #
+    # @param [Time] time of UUID
+    # @param [Numeric] epoch offset
+    # @return [Bignum] UUID
+    # @example
+    #   Druuid.min_for_time
+    #   # => 11142943683379200000
+    def min_for_time time = Time.now, epoch_offset = epoch
+      ms = ((time.to_f - epoch_offset.to_i) * 1e3).round
+      ms << NUM_RANDOM_BITS
     end
 
   end
